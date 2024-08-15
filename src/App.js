@@ -1,31 +1,27 @@
 import React, { useState } from 'react';
-import './styles/styles.css';
-import Sidebar from './components/Sidebar';
-import SearchBar from './components/SearchBar';
-import FloatingButton from './components/FloatingButton';
-import Messaging from './components/Messaging';
-import TodoList from './components/TodoList';
+import './styles/styles.css';  // Pastikan path ini sesuai dengan lokasi file CSS Anda
+import { FaBolt, FaChat, FaTasks } from 'react-icons/fa';  // Gunakan ikon yang ada
 
 function App() {
-  const [isMessagingOpen, setMessagingOpen] = useState(false);
-  const [isTaskOpen, setTaskOpen] = useState(false);
-
-  const toggleMessaging = () => {
-    setMessagingOpen(!isMessagingOpen);
-  };
-
-  const toggleTask = () => {
-    setTaskOpen(!isTaskOpen);
-  };
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <div className="App">
-      <Sidebar />
-      <div className="divider"></div>
-      <SearchBar />
-      <FloatingButton onClick={() => { toggleMessaging(); toggleTask(); }} />
-      <Messaging isOpen={isMessagingOpen} onClose={toggleMessaging} />
-      <TodoList isOpen={isTaskOpen} onClose={toggleTask} />
+      <header className="App-header">
+        <div className="search-bar">
+          <input type="text" placeholder="Search..." />
+          <FaBolt className="search-icon" />
+        </div>
+        <div className={`floating-button ${expanded ? 'expanded' : ''}`} onClick={() => setExpanded(!expanded)}>
+          <FaBolt />
+        </div>
+        {expanded && (
+          <div className="floating-menu">
+            <button className="menu-button"><FaChat /></button>
+            <button className="menu-button"><FaTasks /></button>
+          </div>
+        )}
+      </header>
     </div>
   );
 }

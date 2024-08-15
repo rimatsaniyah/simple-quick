@@ -1,14 +1,14 @@
 import React from 'react';
-import '../styles/styles.css';
-import searchIcon from '../assets/images/search-icon.png';
+import { FaSearch } from 'react-icons/fa';
+import './SearchBar.css';
 
-const SearchBar = () => {
+function SearchBar() {
   return (
     <div className="search-bar">
-      <img src={searchIcon} alt="Search" className="search-icon" />
-      <input type="text" placeholder="Search..." aria-label="Search" />
+      <input type="text" placeholder="Search..." />
+      <FaSearch className="search-icon" />
     </div>
   );
-};
+}
 
 export default SearchBar;

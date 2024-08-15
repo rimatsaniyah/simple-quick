@@ -1,22 +1,15 @@
 import React from 'react';
-import '../styles/styles.css';
+import './TodoList.css';
 
-const TodoList = ({ isOpen, onClose }) => {
+function TodoList({ isOpen, onClose }) {
+  if (!isOpen) return null;
+
   return (
-    isOpen && (
-      <div className="popup-task">
-        <div className="searchbar-chat">
-          <input type="text" placeholder="Search tasks..." aria-label="Search tasks" className="search-label" />
-        </div>
-        <div className="task-list">
-          <div className="task">Task 1</div>
-          <div className="task">Task 2</div>
-          <div className="task">Task 3</div>
-        </div>
-        <button onClick={onClose}>Close</button>
-      </div>
-    )
+    <div className="todo-popup">
+      <button className="close-button" onClick={onClose}>X</button>
+      {/* Todo List Content */}
+    </div>
   );
-};
+}
 
 export default TodoList;

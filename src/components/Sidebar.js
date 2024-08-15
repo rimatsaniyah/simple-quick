@@ -1,14 +1,12 @@
 import React from 'react';
-import '../styles/styles.css';
+import './Sidebar.css';
 
-const Sidebar = () => {
+function Sidebar() {
   return (
     <div className="sidebar">
-      <div className="sidebar-item">Item 1</div>
-      <div className="sidebar-item">Item 2</div>
-      <div className="sidebar-item">Item 3</div>
+      {/* Sidebar Content */}
     </div>
   );
-};
+}
 
 export default Sidebar;
