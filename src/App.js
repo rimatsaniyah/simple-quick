@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './styles/styles.css';
+import Sidebar from './components/Sidebar';
+import SearchBar from './components/SearchBar';
+import FloatingButton from './components/FloatingButton';
+import Messaging from './components/Messaging';
+import TodoList from './components/TodoList';
 
 function App() {
+  const [isMessagingOpen, setMessagingOpen] = useState(false);
+  const [isTaskOpen, setTaskOpen] = useState(false);
+
+  const toggleMessaging = () => {
+    setMessagingOpen(!isMessagingOpen);
+  };
+
+  const toggleTask = () => {
+    setTaskOpen(!isTaskOpen);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Sidebar />
+      <div className="divider"></div>
+      <SearchBar />
+      <FloatingButton onClick={() => { toggleMessaging(); toggleTask(); }} />
+      <Messaging isOpen={isMessagingOpen} onClose={toggleMessaging} />
+      <TodoList isOpen={isTaskOpen} onClose={toggleTask} />
     </div>
   );
 }
